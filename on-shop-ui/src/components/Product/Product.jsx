@@ -1,9 +1,10 @@
+import React from "react";
+
 import {
   FavoriteBorderOutlined,
   SearchOutlined,
   ShoppingCartOutlined,
 } from "@material-ui/icons";
-import React from "react";
 
 import { Link } from "react-router-dom";
 
