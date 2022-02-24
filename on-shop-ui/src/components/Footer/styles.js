@@ -3,7 +3,7 @@ import { mobile } from "../../responsive";
 
 export const Container = styled.div`
   display: flex;
-  ${mobile({ flexDiection: "column" })};
+  ${mobile({ flexDirection: "column" })};
 `;
 
 export const Left = styled.section`
