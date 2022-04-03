@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { mobile } from "../../responsive";
 
+export const NavbarContainer = styled.div``;
+
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;

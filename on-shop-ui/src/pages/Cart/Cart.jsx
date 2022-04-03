@@ -68,8 +68,8 @@ const Cart = () => {
   console.log(stripeToken);
   return (
     <Container>
-      <Navbar />
       <Announcement />
+      <Navbar />
       <Wrapper>
         <Title>Your bag</Title>
         <Top>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 
 import {
   Container,
@@ -16,9 +17,20 @@ import {
 } from "./styles";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import { Badge } from "@material-ui/core";
+import { logout } from "../../redux/userRedux";
+import { logoutCart } from "../../redux/cartRedux";
 
 const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
+  const user = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleClick = () => {
+    dispatch(logout());
+    dispatch(logoutCart());
+    history.push("/");
+  };
   return (
     <Container>
       <Wrapper>
@@ -30,11 +42,21 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>Lama.</Logo>
+          <Link to="/">
+            <Logo>Zafyr.</Logo>
+          </Link>
         </Center>
         <Right>
-          <MenuItem>Register</MenuItem>
-          <MenuItem>Sign In</MenuItem>
+          <Link to="register">
+            <MenuItem>Register</MenuItem>
+          </Link>
+          {!user ? (
+            <Link to="login">
+              <MenuItem>Sign In</MenuItem>
+            </Link>
+          ) : (
+            <MenuItem onClick={handleClick}>Logout</MenuItem>
+          )}
           <Link to="/cart">
             <MenuItem>
               {" "}
