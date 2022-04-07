@@ -3,7 +3,6 @@ import { login } from "../../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
-  NavbarContainer,
   Container,
   Wrapper,
   Title,
@@ -13,8 +12,7 @@ import {
   Link,
   Error,
 } from "./styles";
-import Navbar from "../../components/Navbar/Navbar";
-import Announcement from "../../components/Announcement/Announcement";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -27,36 +25,38 @@ const Login = () => {
     login(dispatch, { username, password });
   };
   return (
-    <NavbarContainer>
-      <Announcement />
-      <Navbar />
-      <Container>
-        <Wrapper>
-          <Title>Sign in</Title>
-          <Form>
-            <Input
-              placeholder="username"
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <Input
-              placeholder="password"
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <Button onClick={handleClick} disabled={isFetching}>
-              LOGIN
-            </Button>
-            {error && (
-              <Error disabled={currentUser !== null}>
-                Something went wrong...
-              </Error>
+    <Container>
+      <Wrapper>
+        <Title>Sign in</Title>
+        <Form>
+          <Input
+            placeholder="username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <Input
+            placeholder="password"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button onClick={handleClick} disabled={isFetching}>
+            {isFetching ? (
+              <CircularProgress
+                style={{ color: "white", width: "24px", height: "24px" }}
+              />
+            ) : (
+              "LOGIN"
             )}
-            <Link>Don't remember your password?</Link>
-            <Link>Create a new account</Link>
-          </Form>
-        </Wrapper>
-      </Container>
-    </NavbarContainer>
+          </Button>
+          {error && (
+            <Error disabled={currentUser !== null}>
+              Something went wrong...
+            </Error>
+          )}
+          <Link>Don't remember your password?</Link>
+          <Link>Create a new account</Link>
+        </Form>
+      </Wrapper>
+    </Container>
   );
 };
 

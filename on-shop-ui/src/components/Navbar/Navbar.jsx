@@ -22,7 +22,7 @@ import { logoutCart } from "../../redux/cartRedux";
 
 const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
-  const user = useSelector((state) => state.user.currentUser);
+  const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -47,10 +47,14 @@ const Navbar = () => {
           </Link>
         </Center>
         <Right>
-          <Link to="register">
-            <MenuItem>Register</MenuItem>
-          </Link>
-          {!user ? (
+          {!currentUser ? (
+            <Link to="register">
+              <MenuItem>Register</MenuItem>
+            </Link>
+          ) : (
+            ""
+          )}
+          {!currentUser ? (
             <Link to="login">
               <MenuItem>Sign In</MenuItem>
             </Link>
