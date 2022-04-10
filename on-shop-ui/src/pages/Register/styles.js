@@ -55,3 +55,12 @@ export const Button = styled.button`
   color: white;
   cursor: pointer;
 `;
+
+export const Error = styled.span`
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: red;
+  &:disabled {
+    display: hidden;
+  }
+`;
