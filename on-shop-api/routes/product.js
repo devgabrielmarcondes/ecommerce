@@ -70,7 +70,7 @@ router.get("/", async (req, res) => {
     } else if (qTerms) {
       products = await Terms.find({
         terms: {
-          $all: qTerms,
+          $regex: new RegExp(qTerms),
         },
       });
     } else {

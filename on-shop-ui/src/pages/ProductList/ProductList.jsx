@@ -24,7 +24,6 @@ const ProductList = () => {
   };
   const title = simplify(location.pathname.split("/")[2]);
   const titleText = location.pathname.split("/")[2];
-  console.log(title);
   const [filters, setFilters] = useState({});
   const [sort, setSort] = useState("newest");
 
