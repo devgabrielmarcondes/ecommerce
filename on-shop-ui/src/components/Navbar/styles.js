@@ -33,6 +33,8 @@ export const SearchContainer = styled.section`
   padding: 5px;
 `;
 
+export const Form = styled.form``;
+
 export const Input = styled.input`
   border: none;
   outline: none;

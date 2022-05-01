@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
@@ -11,6 +11,7 @@ import {
   Right,
   Language,
   SearchContainer,
+  Form,
   Input,
   Logo,
   MenuItem,
@@ -25,11 +26,21 @@ const Navbar = () => {
   const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const history = useHistory();
+  const [query, setQuery] = useState("");
 
   const handleClick = () => {
     dispatch(logout());
     dispatch(logoutCart());
     history.push("/");
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    history.push(`/products/${query}`);
+  };
+
+  const queryChangeHandler = (e) => {
+    setQuery(e.target.value);
   };
   return (
     <Container>
@@ -37,8 +48,17 @@ const Navbar = () => {
         <Left>
           <Language>EN</Language>
           <SearchContainer>
-            <Input placeholder="Search" />
-            <Search style={{ color: "gray", fontSize: "16px" }} />
+            <Form onSubmit={submitHandler}>
+              <Input
+                onChange={queryChangeHandler}
+                placeholder="Search"
+                name="query"
+              />
+              <Search
+                style={{ color: "gray", fontSize: "16px" }}
+                type="submit"
+              />
+            </Form>
           </SearchContainer>
         </Left>
         <Center>
