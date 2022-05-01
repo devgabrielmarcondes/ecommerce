@@ -18,7 +18,12 @@ import {
 
 const ProductList = () => {
   const location = useLocation();
-  const title = location.pathname.split("/")[2];
+  const simplify = (text) => {
+    const regex = /[\s,\.;:\(\)\-'\+]/;
+    return text.toUpperCase().split(regex);
+  };
+  const title = simplify(location.pathname.split("/")[2]);
+  const titleText = location.pathname.split("/")[2];
   console.log(title);
   const [filters, setFilters] = useState({});
   const [sort, setSort] = useState("newest");
@@ -34,7 +39,7 @@ const ProductList = () => {
     <Container>
       <Announcement />
       <Navbar />
-      <Title>{title}</Title>
+      <Title>{titleText}</Title>
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>

@@ -1,4 +1,5 @@
 const Product = require("../models/Product");
+const Terms = require("../models/Terms");
 const {
   verifyToken,
   verifyTokenAndAuthorization,
@@ -60,20 +61,20 @@ router.get("/find/:id", async (req, res) => {
 // // GET ALL PRODUCTS
 router.get("/", async (req, res) => {
   const qNew = req.query.new;
-  const qTitle = req.query.title;
+  const qTerms = req.query.title;
   try {
     let products;
 
     if (qNew) {
-      products = await Product.find().sort({ createdAt: -1 }).limit(5);
-    } else if (qTitle) {
-      products = await Product.find({
-        title: {
-          $in: [qTitle],
+      products = await Terms.find().sort({ createdAt: -1 }).limit(5);
+    } else if (qTerms) {
+      products = await Terms.find({
+        terms: {
+          $all: qTerms,
         },
       });
     } else {
-      products = await Product.find();
+      products = await Terms.find();
     }
 
     res.status(200).json(products);
