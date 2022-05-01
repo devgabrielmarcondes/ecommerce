@@ -4,7 +4,7 @@ import Product from "../Product/Product";
 import { Container } from "./styles";
 import axios from "axios";
 
-const Products = ({ cat, filters, sort }) => {
+const Products = ({ title, filters, sort }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -12,18 +12,18 @@ const Products = ({ cat, filters, sort }) => {
     const getProducts = async () => {
       try {
         const res = await axios.get(
-          cat
-            ? `http://localhost:5000/api/products?title=${cat}`
+          title
+            ? `http://localhost:5000/api/products?title=${title}`
             : "http://localhost:5000/api/products"
         );
         setProducts(res.data);
       } catch (err) {}
     };
     getProducts();
-  }, [cat]);
+  }, [title]);
 
   useEffect(() => {
-    cat &&
+    title &&
       setFilteredProducts(
         products.filter((item) =>
           Object.entries(filters).every(([key, value]) =>
@@ -31,7 +31,7 @@ const Products = ({ cat, filters, sort }) => {
           )
         )
       );
-  }, [products, cat, filters]);
+  }, [products, title, filters]);
 
   useEffect(() => {
     if (sort === "newest") {
@@ -51,7 +51,7 @@ const Products = ({ cat, filters, sort }) => {
 
   return (
     <Container>
-      {cat
+      {title
         ? filteredProducts.map((item) => <Product item={item} key={item._id} />)
         : products
             .slice(0, 8)

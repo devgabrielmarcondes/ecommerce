@@ -18,7 +18,8 @@ import {
 
 const ProductList = () => {
   const location = useLocation();
-  const cat = location.pathname.split("/")[2];
+  const title = location.pathname.split("/")[2];
+  console.log(title);
   const [filters, setFilters] = useState({});
   const [sort, setSort] = useState("newest");
 
@@ -33,7 +34,7 @@ const ProductList = () => {
     <Container>
       <Announcement />
       <Navbar />
-      <Title>{cat}</Title>
+      <Title>{title}</Title>
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
@@ -65,7 +66,7 @@ const ProductList = () => {
           </Select>
         </Filter>
       </FilterContainer>
-      <Products cat={cat} filters={filters} sort={sort} />
+      <Products title={title} filters={filters} sort={sort} />
       <Newsletter />
       <Footer />
     </Container>
