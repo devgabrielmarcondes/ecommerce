@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { login } from "../../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
+import FailedModal from "../../components/Modal/FailedModal/FailedModal";
 
 import {
   Container,
@@ -8,16 +9,18 @@ import {
   Title,
   Form,
   Input,
+  Agreement,
+  CheckBox,
   Button,
   Link,
-  Error,
 } from "./styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
+
   const { isFetching, error, currentUser } = useSelector((state) => state.user);
 
   const handleClick = async (e) => {
@@ -26,6 +29,7 @@ const Login = () => {
   };
   return (
     <Container>
+      <FailedModal display={error === false ? "none" : "flex"} />
       <Wrapper>
         <Title>Sign in</Title>
         <Form>
@@ -38,7 +42,11 @@ const Login = () => {
             type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button onClick={handleClick} disabled={isFetching}>
+          <Agreement htmlFor="log" style={{ marginTop: "10px" }}>
+            <CheckBox type="checkbox" id="log" defaultChecked />
+            Keep me logged in
+          </Agreement>
+          <Button onClick={handleClick} disabled={isFetching ? true : false}>
             {isFetching ? (
               <CircularProgress
                 style={{ color: "white", width: "24px", height: "24px" }}
@@ -47,11 +55,6 @@ const Login = () => {
               "LOGIN"
             )}
           </Button>
-          {error && (
-            <Error disabled={currentUser !== null}>
-              Something went wrong...
-            </Error>
-          )}
           <Link>Don't remember your password?</Link>
           <Link>Create a new account</Link>
         </Form>

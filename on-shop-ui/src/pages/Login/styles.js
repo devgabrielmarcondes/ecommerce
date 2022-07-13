@@ -41,6 +41,24 @@ export const Input = styled.input`
   padding: 10px;
 `;
 
+export const Agreement = styled.label`
+  color: grey;
+  width: "85%";
+  font-size: 12px;
+  text-align: left;
+  padding-bottom: 10px;
+  display: block;
+  margin-left: 20px;
+  text-indent: -20px;
+  ${mobile({ marginLeft: "25px" })};
+`;
+export const CheckBox = styled.input`
+  vertical-align: middle;
+  position: relative;
+  margin-right: 10px;
+  bottom: 1px;
+`;
+
 export const Button = styled.button`
   text-transform: uppercase;
   width: 40%;
@@ -65,10 +83,8 @@ export const Link = styled.a`
 `;
 
 export const Error = styled.span`
-  margin-top: 8px;
-  margin-bottom: 8px;
-  color: red;
-  &:disabled {
-    display: hidden;
-  }
+  text-align: center;
+  color: #d9534f;
+  font-size: 14px;
+  padding: 5px 0;
 `;

@@ -41,9 +41,25 @@ export const Input = styled.input`
   padding: 10px;
 `;
 
-export const Agreement = styled.section`
-  font-size: 12px;
-  margin: 20px 0px;
+export const Agreement = styled.label`
+  display: block;
+  padding-left: 15px;
+  padding-bottom: 10px;
+  text-indent: -15px;
+  font-size: 13px;
+  color: #555;
+  cursor: pointer;
+`;
+
+export const CheckBox = styled.input`
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  margin-right: 10px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  cursor: pointer;
 `;
 
 export const Button = styled.button`
@@ -56,11 +72,16 @@ export const Button = styled.button`
   cursor: pointer;
 `;
 
+export const Link = styled.a`
+  margin: 5px 0px;
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+`;
+
 export const Error = styled.span`
-  margin-top: 8px;
-  margin-bottom: 8px;
-  color: red;
-  &:disabled {
-    display: hidden;
-  }
+  text-align: center;
+  color: #d9534f;
+  font-size: 14px;
+  padding: 5px 0;
 `;
