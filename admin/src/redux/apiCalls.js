@@ -50,7 +50,7 @@ export const register = async (dispatch, user) => {
 export async function getProducts(dispatch) {
   dispatch(getProductStart());
   try {
-    const response = await publicRequest.get("products");
+    const response = await publicRequest.get("products/");
     dispatch(getProductSuccess(response.data));
   } catch (error) {
     dispatch(getProductFailure());
@@ -69,7 +69,7 @@ export async function deleteProduct(id, dispatch) {
   }
 }
 
-export async function updateProduct(id, product, dispatch) {
+export async function updateProduct(id, dispatch, product) {
   dispatch(updateProductStart());
   try {
     const response = await userRequest.patch(`/products/${id}`, product);
@@ -82,7 +82,7 @@ export async function updateProduct(id, product, dispatch) {
 export async function addProduct(product, dispatch) {
   dispatch(addProductStart());
   try {
-    const response = await userRequest.post(`/products`, product);
+    const response = await userRequest.post("/products/", product);
     dispatch(addProductSuccess(response.data));
   } catch (error) {
     dispatch(addProductFailure());
