@@ -58,7 +58,7 @@ router.get("/find/:id", async (req, res) => {
   }
 });
 
-// // GET ALL PRODUCTS
+// GET ALL PRODUCTS
 router.get("/", async (req, res) => {
   const qNew = req.query.new;
   const qTerms = req.query.title;
@@ -82,5 +82,4 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 module.exports = router;

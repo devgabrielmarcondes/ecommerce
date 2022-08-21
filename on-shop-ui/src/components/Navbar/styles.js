@@ -49,6 +49,7 @@ export const Center = styled.section`
 export const Logo = styled.h1`
   font-weight: bold;
   text-transform: uppercase;
+  cursor: pointer;
   ${mobile({ fontSize: "24px" })};
 `;
 

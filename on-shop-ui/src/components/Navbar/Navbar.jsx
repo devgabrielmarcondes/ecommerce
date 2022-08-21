@@ -16,7 +16,11 @@ import {
   Logo,
   MenuItem,
 } from "./styles";
-import { Search, ShoppingCartOutlined } from "@material-ui/icons";
+import { Search } from "@material-ui/icons";
+
+import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
+import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
+
 import { Badge } from "@material-ui/core";
 import { logout } from "../../redux/userRedux";
 import { logoutCart } from "../../redux/cartRedux";
@@ -62,9 +66,13 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Link to="/">
-            <Logo>Zafyr.</Logo>
-          </Link>
+          <Logo
+            onClick={() => {
+              history.push("/");
+            }}
+          >
+            Zafyr.
+          </Logo>
         </Center>
         <Right>
           {!currentUser ? (
@@ -81,14 +89,27 @@ const Navbar = () => {
           ) : (
             <MenuItem onClick={handleClick}>Logout</MenuItem>
           )}
-          <Link to="/cart">
-            <MenuItem>
-              {" "}
-              <Badge badgeContent={quantity} color="primary">
-                <ShoppingCartOutlined />
-              </Badge>
-            </MenuItem>
-          </Link>
+
+          <MenuItem>
+            {" "}
+            <Badge badgeContent={quantity} color="primary">
+              <ShoppingCartOutlinedIcon
+                onClick={() => {
+                  history.push("/cart");
+                }}
+              />
+            </Badge>
+          </MenuItem>
+          <MenuItem>
+            {" "}
+            <Badge badgeContent={quantity} color="primary">
+              <FavoriteBorderOutlinedIcon
+                onClick={() => {
+                  history.push("/wishlist");
+                }}
+              />
+            </Badge>
+          </MenuItem>
         </Right>
       </Wrapper>
     </Container>

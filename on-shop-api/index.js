@@ -8,6 +8,7 @@ const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const stripeRoute = require("./routes/stripe");
 const commentRoute = require("./routes/comments");
+const wishlistRoute = require("./routes/wishlist");
 const cors = require("cors");
 const app = express();
 
@@ -29,6 +30,7 @@ app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/checkout", stripeRoute);
 app.use("/api/comments", commentRoute);
+app.use("/api/wishlist", wishlistRoute);
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("Backend server is running on port 5000");

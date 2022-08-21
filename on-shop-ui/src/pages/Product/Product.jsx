@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useLocation } from "react-router";
 import { publicRequest } from "../../requestMethods";
 
+import PopularProducts from "../../components/PopularProducts/PopularProducts";
 import Comments from "../../components/Comments/Comments";
 import Announcement from "../../components/Announcement/Announcement";
 import Footer from "../../components/Footer/Footer";
@@ -105,6 +106,7 @@ const Product = () => {
         </InfoContainer>
       </Wrapper>
       <Comments productId={product._id} />
+      <PopularProducts description="PEOPLE ALSO VIEW THESE" />
       <Newsletter />
       <Footer />
     </Container>

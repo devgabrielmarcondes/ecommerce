@@ -1,64 +1,85 @@
 import styled from "styled-components";
+import { mobile } from "../../responsive";
 
-export const Info = styled.section`
-  opacity: 0;
+export const Container = styled.div`
+  flex: 1;
+  margin: 10px;
+  min-width: 280px;
+  max-width: 300px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  background-color: #efefef;
+  position: relative;
+  ${mobile({ height: "250px", margin: "10px auto", minWidth: "230px" })}
+`;
+export const Info = styled.div`
   width: 100%;
-  height: 100%;
+  height: 30%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.5s ease;
+`;
+export const Logo = styled.div`
+  opacity: 1;
+  width: 20%;
+  height: 20%;
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.2);
   z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.5 ease;
-  cursor: pointer;
 `;
-
-export const Container = styled.div`
+export const LogoImage = styled.img`
+  width: 50%;
+  transition: all 0.5s ease;
+`;
+export const Name = styled.h1`
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+`;
+export const InfoText = styled.p`
+  font-size: 0.9rem;
+`;
+export const Left = styled.div`
   flex: 1;
-  margin: 5px;
-  min-width: 280px;
-  height: 350px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+`;
+export const Right = styled.div`
+  flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: #f5fbfd;
-  position: relative;
-
-  &:hover ${Info} {
-    opacity: 1;
-  }
+  justify-content: flex-end;
 `;
-
-export const Circle = styled.div`
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background-color: white;
-  position: absolute;
-`;
-
 export const Image = styled.img`
-  height: 75%;
+  width: 70%;
   z-index: 2;
+  align-items: center;
+  padding-bottom: 30px;
+  margin: auto;
+  cursor: pointer;
 `;
-
 export const Icon = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: 50%;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 10px;
-  background-color: #e9f5f5;
-  cursor: pointer;
-  transition: all 0.5 ease;
-
+  margin: 5px;
+  transition: all 0.5s ease;
   &:hover {
-    transform: scale(1.1);
+    background-color: #efefef;
   }
 `;
