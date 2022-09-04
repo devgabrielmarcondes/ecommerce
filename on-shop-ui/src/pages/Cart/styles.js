@@ -100,10 +100,53 @@ export const ProductAmountContainer = styled.section`
   margin-bottom: 20px;
 `;
 
-export const ProductAmount = styled.div`
-  font-size: 24px;
-  margin: 5px;
-  ${mobile({ margin: "5px 15px" })}
+export const ProductAmount = styled.span`
+  width: 40px;
+  height: 30px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  ${mobile({
+    fontSize: "8px",
+    width: "30px",
+    height: "25px",
+    borderRadius: "8px",
+    marginLeft: "3px",
+  })}
+`;
+
+export const RemoveContainer = styled.div`
+  display: flex;
+  cursor: pointer;
+  margin-top: 5px;
+`;
+
+export const Remove = styled.p`
+  color: grey;
+  font-size: 12px;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export const QuantityButton = styled.button`
+  width: 30px;
+  height: 30px;
+  border: none;
+  margin: 0 5px;
+  background-color: white;
+  color: ${(prop) => prop.color};
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform: scale(1.2);
+  ${mobile({
+    transform: "scale(0.75)",
+    margin: "0",
+    width: "20px",
+  })}
 `;
 
 export const ProductPrice = styled.div`

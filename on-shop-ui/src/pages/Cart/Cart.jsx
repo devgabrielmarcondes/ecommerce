@@ -32,19 +32,46 @@ import {
   SummaryItemText,
   SummaryItemPrice,
   Button,
+  Remove,
+  RemoveContainer,
+  QuantityButton,
 } from "./styles";
-import { Add, Remove } from "@material-ui/icons";
-import { useSelector } from "react-redux";
+import ArrowCircleRightRoundedIcon from "@material-ui/icons/ArrowRightRounded";
+import ArrowCircleLeftRoundedIcon from "@material-ui/icons/ArrowLeftRounded";
+import { useSelector, useDispatch } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../../requestMethods";
 import { useHistory } from "react-router-dom";
+import {
+  addProductQuantity,
+  subtractProductQuantity,
+  removeProduct,
+} from "../../redux/cartRedux";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
+  const [remove, setRemove] = useState(false);
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const handleQuantity = (type, product) => {
+    const price = product.price;
+    if (type === "Add" && product.quantity < 10) {
+      dispatch(addProductQuantity({ product, price }));
+    } else if (type === "Subtract" && product.quantity > 1) {
+      dispatch(subtractProductQuantity({ product, price }));
+    }
+  };
+
+  const handleRemove = (product) => {
+    setRemove(true);
+    const price = product.price;
+    const quantity = product.quantity;
+    dispatch(removeProduct({ product, price, quantity }));
+  };
 
   const onToken = (token) => {
     setStripeToken(token);
@@ -101,13 +128,30 @@ const Cart = () => {
                 </ProductDetail>
                 <PriceDetail>
                   <ProductAmountContainer>
-                    <Add />
+                    <QuantityButton
+                      color={product.quantity === 1 ? "lightgrey" : "#110f12"}
+                    >
+                      <ArrowCircleLeftRoundedIcon
+                        onClick={() => handleQuantity("Subtract", product)}
+                      />
+                    </QuantityButton>
                     <ProductAmount>{product.quantity}</ProductAmount>
-                    <Remove />
+                    <QuantityButton
+                      color={product.quantity === 1 ? "lightgrey" : "#110f12"}
+                    >
+                      <ArrowCircleRightRoundedIcon
+                        onClick={() => handleQuantity("Add", product)}
+                      />
+                    </QuantityButton>
                   </ProductAmountContainer>
                   <ProductPrice>
                     $ {product.price * product.quantity}
                   </ProductPrice>
+                  <RemoveContainer>
+                    <Remove onClick={() => handleRemove(product)}>
+                      Remove
+                    </Remove>
+                  </RemoveContainer>
                 </PriceDetail>
               </Product>
             ))}

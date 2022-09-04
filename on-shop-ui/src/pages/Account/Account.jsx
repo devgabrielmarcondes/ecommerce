@@ -47,7 +47,7 @@ const Account = () => {
           <Left>
             <Action
               onClick={() => {
-                history.push(-1);
+                history.goBack();
               }}
             >
               <ArrowRightAltIcon style={{ transform: "rotate(180deg)" }} />
