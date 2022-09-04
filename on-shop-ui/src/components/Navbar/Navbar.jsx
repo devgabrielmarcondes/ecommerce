@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import { UserModal } from "../../components/Modal/UserModal/UserModal";
 
 import {
   Container,
@@ -22,21 +23,12 @@ import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 
 import { Badge } from "@material-ui/core";
-import { logout } from "../../redux/userRedux";
-import { logoutCart } from "../../redux/cartRedux";
 
 const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
   const { currentUser } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
   const history = useHistory();
   const [query, setQuery] = useState("");
-
-  const handleClick = () => {
-    dispatch(logout());
-    dispatch(logoutCart());
-    history.push("/");
-  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -87,7 +79,14 @@ const Navbar = () => {
               <MenuItem>Sign In</MenuItem>
             </Link>
           ) : (
-            <MenuItem onClick={handleClick}>Logout</MenuItem>
+            ""
+          )}
+          {currentUser ? (
+            <MenuItem>
+              <UserModal />
+            </MenuItem>
+          ) : (
+            ""
           )}
 
           <MenuItem>
