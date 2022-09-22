@@ -1,32 +1,34 @@
 const createError = require("../error.js");
 const { verifyToken } = require("./verifyToken");
-const Product = require("../models/Product");
-
 const router = require("express").Router();
+const Comment = require("../models/Comment");
 
 // ADD COMMENT
 
-router.post("/", verifyToken, async (req, res) => {
-  const newComment = new Comment({ ...req.body, userId: req.user.id });
+router.post("/:productId", verifyToken, async (req, res) => {
+  const { desc } = req.body
+  const { productId } = req.params
+  const userId = req.user.id;
+  const newComment = new Comment({ desc, userId, productId });
   try {
     const savedComment = await newComment.save();
-    res.status(200).send(savedComment);
+    return res.status(200).send(savedComment);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 });
 
 // DELETE COMMENT
 
 router.delete("/:id", verifyToken, async (req, res, next) => {
+  const { id } = req.params
   try {
-    const comment = await Comment.findById(res.params.id);
-    const product = await Product.findById(res.params.id);
-    if (req.user.id === comment.userId || req.user.id === product.userId) {
-      await Comment.findByIdAndDelete(req.params.id);
-      res.status(200).json("The comment has been deleted.");
+    const comment = await Comment.findById(id);
+    if (comment.userId === req.user.id) {
+      await Comment.findByIdAndDelete(id);
+      return res.status(200).json("The comment has been deleted.");
     } else {
-      return next(createError(403, "You can delete ony your comment!"));
+      return next(createError(403, "You can only delete your comment!"));
     }
   } catch (err) {
     res.status(500).json(err);
@@ -36,8 +38,9 @@ router.delete("/:id", verifyToken, async (req, res, next) => {
 // GET COMMENTS
 
 router.get("/:productId", async (req, res) => {
+  const { productId } = req.params
   try {
-    const comments = await Comment.find({ productId: req.params.productId });
+    const comments = await Comment.find({ productId });
     res.status(200).json(comments);
   } catch (err) {
     res.status(500).json(err);

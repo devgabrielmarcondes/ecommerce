@@ -7,7 +7,7 @@ import {
   registerFailure,
   updateUser,
 } from "./userRedux";
-import { publicRequest } from "../requestMethods";
+import { publicRequest, userRequest } from "../requestMethods";
 import { addToWishlist, createWishlist, updateWishlist } from "./wishRedux";
 import { addOrder, updateOrder } from "./orderRedux";
 
@@ -45,7 +45,7 @@ export const register = async (dispatch, user) => {
 
 export async function updateUserInfo(id, user, dispatch) {
   try {
-    const response = await publicRequest.patch(`users/${id}`, user);
+    const response = await userRequest.patch(`users/${id}`, user);
     dispatch(updateUser(response.data));
   } catch (error) {
     console.error(error);
@@ -56,7 +56,7 @@ export async function updateUserInfo(id, user, dispatch) {
 
 export async function updateWishlistProducts(id, item, dispatch) {
   try {
-    const response = await publicRequest.patch(`wishlist/${id}`, item);
+    const response = await userRequest.patch(`wishlist/${id}`, item);
     dispatch(updateWishlist(response.data));
   } catch (error) {
     console.error(error);
@@ -67,7 +67,7 @@ export async function updateWishlistProducts(id, item, dispatch) {
 
 export async function getOrders(userID, dispatch) {
   try {
-    const response = await publicRequest.get(`orders/${userID}`);
+    const response = await userRequest.get(`orders/${userID}`);
     dispatch(addOrder(response.data));
   } catch (error) {
     console.error(error);
@@ -75,9 +75,17 @@ export async function getOrders(userID, dispatch) {
 }
 export async function updateOrderStatus(id, item, dispatch) {
   try {
-    const response = await publicRequest.patch(`orders/${id}`, item);
+    const response = await userRequest.patch(`orders/${id}`, item);
     dispatch(updateOrder(response.data));
   } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function addComment(desc, dispatch) {
+  try{
+   const response = await userRequest.post(`/comments/${productId}`, {desc});
+  } catch(err) {
     console.error(error);
   }
 }
