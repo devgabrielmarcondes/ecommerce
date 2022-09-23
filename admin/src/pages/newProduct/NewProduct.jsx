@@ -66,11 +66,11 @@ export default function NewProduct() {
           case "running":
             console.log("Upload is running");
             break;
-          default:
+          default: break;
         }
       },
       (error) => {
-        // Handle unsuccessful uploads
+        console.log(error);
       },
       () => {
         // Handle successful uploads on complete
@@ -120,6 +120,16 @@ export default function NewProduct() {
           <label>Description</label>
           <input
             name="desc"
+            type="text"
+            placeholder="description..."
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="addProductItem">
+          <label>Alt text</label>
+          <input
+            name="alt"
             type="text"
             placeholder="description..."
             onChange={handleChange}

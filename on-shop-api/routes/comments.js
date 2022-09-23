@@ -5,11 +5,8 @@ const Comment = require("../models/Comment");
 
 // ADD COMMENT
 
-router.post("/:productId", verifyToken, async (req, res) => {
-  const { desc } = req.body
-  const { productId } = req.params
-  const userId = req.user.id;
-  const newComment = new Comment({ desc, userId, productId });
+router.post("/", verifyToken, async (req, res) => {
+  const newComment = new Comment({ ...req.body, userId: req.user.id });
   try {
     const savedComment = await newComment.save();
     return res.status(200).send(savedComment);
@@ -21,7 +18,7 @@ router.post("/:productId", verifyToken, async (req, res) => {
 // DELETE COMMENT
 
 router.delete("/:id", verifyToken, async (req, res, next) => {
-  const { id } = req.params
+  const { id } = req.params;
   try {
     const comment = await Comment.findById(id);
     if (comment.userId === req.user.id) {
@@ -38,7 +35,7 @@ router.delete("/:id", verifyToken, async (req, res, next) => {
 // GET COMMENTS
 
 router.get("/:productId", async (req, res) => {
-  const { productId } = req.params
+  const { productId } = req.params;
   try {
     const comments = await Comment.find({ productId });
     res.status(200).json(comments);

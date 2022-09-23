@@ -10,6 +10,7 @@ import {
 import { publicRequest, userRequest } from "../requestMethods";
 import { addToWishlist, createWishlist, updateWishlist } from "./wishRedux";
 import { addOrder, updateOrder } from "./orderRedux";
+import { addComment } from "./commentRedux";
 
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
@@ -82,10 +83,11 @@ export async function updateOrderStatus(id, item, dispatch) {
   }
 }
 
-export async function addComment(desc, dispatch) {
-  try{
-   const response = await userRequest.post(`/comments/${productId}`, {desc});
-  } catch(err) {
-    console.error(error);
+export async function addComments(desc, dispatch) {
+  try {
+    const response = await userRequest.post(`/comments/`, desc);
+    dispatch(addComment(response.data));
+  } catch (err) {
+    console.error(err);
   }
 }
