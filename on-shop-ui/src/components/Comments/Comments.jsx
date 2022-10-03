@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addComments } from "../../redux/apiCalls";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import Comment from "../Comment/Comment";
 import SendIcon from "@material-ui/icons/Send";
 import { Avatar, Container, Input, NewComment, Button } from "./styles";
 
 const Comments = ({ productId }) => {
-  const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
 
   const [commentDesc, setCommentDesc] = useState("");
@@ -25,8 +23,10 @@ const Comments = ({ productId }) => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    await addComments(commentDesc, dispatch);
-    // await axios.post(`/comments/${productId}`, {desc: commentDesc});
+    await axios.post(`http://localhost:5000/api/comments/`, {
+      commentDesc,
+      productId,
+    });
   };
 
   return (

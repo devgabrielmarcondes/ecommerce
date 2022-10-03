@@ -32,7 +32,7 @@ router.patch("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     await Wishlist.findByIdAndDelete(req.params.id);
-    return res.status(200).json("Shoe has been removed from Wishlist");
+    return res.status(200).json("Item has been removed from Wishlist");
   } catch (error) {
     return res.status(500).json(error);
   }

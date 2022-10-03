@@ -7,8 +7,8 @@ const CommentSchema = new mongoose.Schema(
       required: true,
     },
     productId: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     desc: {
       type: String,
