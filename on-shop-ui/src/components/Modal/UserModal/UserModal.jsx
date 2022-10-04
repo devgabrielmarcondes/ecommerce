@@ -33,7 +33,7 @@ export const UserMobileModal = () => {
     setAnchorEl(null);
   };
   const initials = () => {
-    const fullName = user.firstname + " " + user.lastname;
+    const fullName = user.name + " " + user.surname;
     const firstLetters = fullName.match(/\b\w/g).join("");
     return firstLetters.toUpperCase();
   };
