@@ -1,18 +1,21 @@
 const createError = require("../error.js");
-const { verifyToken, verifyTokenAndAuthorization } = require("./verifyToken");
+const {
+  verifyToken,
+  verifyTokenAndAuthorization,
+  verifyTokenAndAdmin,
+} = require("./verifyToken");
 const router = require("express").Router();
 const Comment = require("../models/Comment");
 
 // ADD COMMENT
 
-router.post("/", verifyTokenAndAuthorization, async (req, res) => {
-  const { id } = req.user.id;
-  const newComment = new Comment({ id, ...req.body });
+router.post("/", verifyTokenAndAdmin, async (req, res) => {
+  const newComment = new Comment({ ...req.body, userId: req.body });
   try {
     const savedComment = await newComment.save();
     return res.status(200).send(savedComment);
-  } catch (id) {
-    console.log(id);
+  } catch (err) {
+    console.log(err);
   }
 });
 

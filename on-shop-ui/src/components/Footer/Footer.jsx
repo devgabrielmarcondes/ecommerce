@@ -23,6 +23,7 @@ import {
   ListItem,
   ContactItem,
   Payment,
+  Text,
 } from "./styles";
 
 const Footer = () => {
@@ -59,23 +60,21 @@ const Footer = () => {
           <ListItem>Woman Fashion</ListItem>
           <ListItem>Accessories</ListItem>
           <ListItem>My Account</ListItem>
-          <ListItem>Order Tracking</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Terms</ListItem>
         </List>
       </Center>
       <Right>
         <Title>Contact</Title>
         <ContactItem>
-          <Room style={{ marginRight: "10px" }} /> 622 Dixie Path , South
-          Tobinchester 98336
+          <Room style={{ marginRight: "10px" }} />
+          <Text>622 Dixie Path, South Tobinchester 98336</Text>
         </ContactItem>
         <ContactItem>
-          <Phone style={{ marginRight: "10px" }} /> +55 (11) 99401-7676
+          <Phone style={{ marginRight: "10px" }} />
+          <Text>+55 (11) 99401-7676</Text>
         </ContactItem>
         <ContactItem>
-          <MailOutline style={{ marginRight: "10px" }} /> contact@gab_mrcd
+          <MailOutline style={{ marginRight: "10px" }} />
+          <Text>contact@gab_mrcd</Text>
         </ContactItem>
         <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
       </Right>

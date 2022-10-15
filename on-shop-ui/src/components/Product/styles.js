@@ -26,22 +26,6 @@ export const Info = styled.div`
   justify-content: space-between;
   transition: all 0.5s ease;
 `;
-export const Logo = styled.div`
-  opacity: 1;
-  width: 20%;
-  height: 20%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-export const LogoImage = styled.img`
-  width: 50%;
-  transition: all 0.5s ease;
-`;
 export const Name = styled.h1`
   font-size: 1.3rem;
   margin-bottom: 5px;
@@ -62,7 +46,8 @@ export const Right = styled.div`
   justify-content: flex-end;
 `;
 export const Image = styled.img`
-  width: 70%;
+  width: 100%;
+  ${mobile({ width: "70%" })}
   z-index: 2;
   align-items: center;
   padding-bottom: 30px;

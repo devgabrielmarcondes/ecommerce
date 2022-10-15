@@ -15,8 +15,6 @@ import {
   Icon,
   InfoText,
   Left,
-  Logo,
-  LogoImage,
   Name,
   Right,
 } from "./styles";
@@ -61,10 +59,7 @@ const Product = ({ item }) => {
           history.push(`/product/${item._id}`);
         }}
       />
-      <Logo>
-        <LogoImage src="#" />
-        ZAFYR.
-      </Logo>
+
       <Info>
         <Left>
           <Name>{item.title}</Name>

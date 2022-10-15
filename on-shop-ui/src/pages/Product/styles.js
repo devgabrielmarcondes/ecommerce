@@ -1,12 +1,16 @@
 import styled from "styled-components";
-import { mobile } from "../../responsive";
+import { mobile, tablet, bigtablet } from "../../responsive";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 export const Wrapper = styled.div`
   padding: 10px;
   display: flex;
   ${mobile({ padding: "10px", flexDirection: "column" })}
+  ${tablet({ padding: "10px", flexDirection: "column" })}
 `;
 
 export const ImgContainer = styled.section`
@@ -14,16 +18,17 @@ export const ImgContainer = styled.section`
 `;
 
 export const Image = styled.img`
-    width: 100%;
-    height: 90vh
-    object-fit: cover;
-    ${mobile({ height: "40vh" })}
+  width: 100%;
+  height: 90vh;
+  ${mobile({ objectFit: "cover", height: "40vh" })}
+  ${tablet({ objectFit: "contain", height: "70vh" })}
+  ${bigtablet({ objectFit: "fill" })}
 `;
 
 export const InfoContainer = styled.section`
   flex: 1;
   padding: 0px 50px;
-  ${mobile({ padding: "10px" })}
+  ${mobile({ padding: "10px" })};
 `;
 
 export const Title = styled.h1`
@@ -44,7 +49,9 @@ export const FilterContainer = styled.section`
   margin: 30px 0px;
   display: flex;
   justify-content: space-between;
-  ${mobile({ width: "100%" })}
+  ${mobile({
+    width: "100%",
+  })}
 `;
 
 export const Filter = styled.div`
@@ -57,13 +64,19 @@ export const FilterTitle = styled.span`
   font-weight: 200;
 `;
 
-export const FilterColor = styled.div`
+export const FilterColor = styled.button`
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background-color: ${(props) => props.color};
   margin: 0px 5px;
   cursor: pointer;
+  border: none;
+
+  &:focus {
+    border-radius: 50%;
+    border: 2px solid black;
+  }
 `;
 
 export const FilterSize = styled.select`

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+/*import styled from "styled-components";
 
 export const Container = styled.div`
   width: auto;
@@ -41,3 +41,4 @@ export const Button = styled.button`
     cursor: not-allowed;
   }
 `;
+*/

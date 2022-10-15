@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { mobile } from "../../responsive";
+import { mobile, tablet } from "../../responsive";
 
 export const Container = styled.div`
   height: 60px;
-  ${mobile({ height: "50px" })};
 `;
 
 export const Wrapper = styled.div`
@@ -31,19 +30,27 @@ export const SearchContainer = styled.section`
   align-items: center;
   margin-left: 25px;
   padding: 5px;
+  width: auto;
+  ${mobile({ width: "100%" })}
 `;
 
-export const Form = styled.form``;
+export const Form = styled.form`
+  display: flex;
+  align-items: center;
+`;
 
 export const Input = styled.input`
   border: none;
   outline: none;
-  ${mobile({ width: "50px" })};
+  ${mobile({ width: "100%", marginLeft: "0" })};
+  ${tablet({ width: "100%", marginLeft: "0" })};
 `;
 
 export const Center = styled.section`
   flex: 1;
   text-align: center;
+  display: flex;
+  justify-content: center;
 `;
 
 export const Logo = styled.h1`
@@ -58,7 +65,7 @@ export const Right = styled.section`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  ${mobile({ flex: 2, jusitfyContent: "center" })};
+  ${mobile({ flex: 1, jusitfyContent: "center" })};
 `;
 
 export const MenuItem = styled.div`

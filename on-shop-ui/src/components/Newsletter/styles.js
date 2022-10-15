@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { mobile } from "../../responsive";
+import { mobile, tablet } from "../../responsive";
 
 export const Container = styled.div`
   height: 60vh;
@@ -11,7 +11,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 70px;
+  font-size: 50px;
   margin-bottom: 20px;
 `;
 
@@ -20,6 +20,7 @@ export const Desc = styled.p`
   font-weight: 300;
   margin-bottom: 20px;
   ${mobile({ textAlign: "center" })};
+  ${tablet({ textAlign: "center" })};
 `;
 
 export const InputContainer = styled.section`
@@ -29,6 +30,7 @@ export const InputContainer = styled.section`
   justify-content: space-between;
   border: 1px solid lightgrey;
   ${mobile({ width: "80%" })};
+  ${tablet({ width: "80%" })};
 `;
 
 export const Input = styled.input`

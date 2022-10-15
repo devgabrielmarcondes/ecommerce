@@ -10,6 +10,7 @@ import PlaylistAddCheckOutlinedIcon from "@material-ui/icons/PlaylistAddCheckOut
 import ShoppingBagOutlinedIcon from "@material-ui/icons/ShoppingBasketOutlined";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import LogoutIcon from "@material-ui/icons/ExitToApp";
+import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../../redux/userRedux";
 import { useDispatch, useSelector } from "react-redux";
@@ -158,16 +159,23 @@ export const UserModal = () => {
     setAnchorEl(event.currentTarget);
   };
   const initials = () => {
-    const fullName = user.firstname + " " + user.lastname;
+    const fullName = user.name + " " + user.surname;
     const firstLetters = fullName.match(/\b\w/g).join("");
     return firstLetters.toUpperCase();
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleSignOut = () => {
-    dispatch(logout());
-    history.push("/");
+  const handleSignOut = async () => {
+    try {
+      await axios.post("http://localhost:5000/api/auth/logout", {
+        token: user.refreshToken,
+      });
+      dispatch(logout());
+      history.push("/");
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <React.Fragment>

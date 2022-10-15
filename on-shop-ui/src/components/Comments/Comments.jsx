@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+/*import { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import Comment from "../Comment/Comment";
@@ -7,8 +7,8 @@ import { Avatar, Container, Input, NewComment, Button } from "./styles";
 
 const Comments = ({ productId }) => {
   const { currentUser } = useSelector((state) => state.user);
+  const textRef = useRef();
 
-  const [commentDesc, setCommentDesc] = useState("");
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
@@ -16,17 +16,27 @@ const Comments = ({ productId }) => {
       try {
         const res = await axios.get(`/comments/${productId}`);
         setComments(res.data);
-      } catch (err) {}
+      } catch (err) {
+        console.log(err);
+      }
     };
     fetchComments();
   }, [productId]);
 
   const handleClick = async (e) => {
     e.preventDefault();
-    await axios.post(`http://localhost:5000/api/comments/`, {
-      commentDesc,
-      productId,
-    });
+
+    const newComment = textRef.current.value;
+
+    try {
+      await axios.post(`http://localhost:5000/api/comments/`, {
+        desc: newComment,
+        productId: productId,
+        userId: currentUser._id,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -34,10 +44,7 @@ const Comments = ({ productId }) => {
       {currentUser === null ? null : (
         <NewComment>
           <Avatar src="#" />
-          <Input
-            placeholder="Add a comment..."
-            onChange={(e) => setCommentDesc(e.target.value)}
-          />
+          <Input placeholder="Add a comment..." ref={textRef} />
           <Button onClick={handleClick}>
             <SendIcon />
           </Button>
@@ -52,3 +59,4 @@ const Comments = ({ productId }) => {
 };
 
 export default Comments;
+*/

@@ -1,15 +1,18 @@
 import styled from "styled-components";
-import { mobile } from "../../responsive";
+import { mobile, tablet } from "../../responsive";
 
 export const Container = styled.div`
   display: flex;
   ${mobile({ flexDirection: "column" })};
+  ${tablet({ flexDirection: "column" })};
 `;
 
 export const Left = styled.section`
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   padding: 20px;
 `;
 
@@ -23,6 +26,8 @@ export const Desc = styled.p`
 
 export const SocialContainer = styled.section`
   display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const SocialIcon = styled.div`
@@ -39,12 +44,16 @@ export const SocialIcon = styled.div`
 
 export const Center = styled.section`
   flex: 1;
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   ${mobile({ display: "none" })};
+  ${tablet({ display: "none" })};
 `;
 
 export const Title = styled.h3`
   margin-bottom: 30px;
+  text-align: center;
 `;
 
 export const List = styled.ul`
@@ -62,16 +71,26 @@ export const ListItem = styled.li`
 
 export const Right = styled.section`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
   ${mobile({ backgroundColor: "#fff8f8" })};
+  ${tablet({ backgroundColor: "#fff8f8" })};
 `;
 
 export const ContactItem = styled.section`
   margin-bottom: 20px;
   display: flex;
   align-items: center;
+  ${mobile({ flexDirection: "column" })};
+  ${tablet({ flexDirection: "column" })};
 `;
 
 export const Payment = styled.img`
   width: 50%;
+`;
+
+export const Text = styled.p`
+  max-width: 150px;
 `;

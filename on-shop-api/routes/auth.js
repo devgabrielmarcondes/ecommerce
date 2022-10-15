@@ -2,6 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
+const { verifyToken } = require("./verifyToken");
 
 let refreshTokens = [];
 
@@ -14,7 +15,7 @@ const generateAccessToken = (user) => {
     process.env.JWT_SEC,
     { expiresIn: "10m" }
   );
-}
+};
 
 const generateRefreshToken = (user) => {
   return jwt.sign(
@@ -25,13 +26,17 @@ const generateRefreshToken = (user) => {
     process.env.JWT_SEC,
     { expiresIn: "7d" }
   );
-}
+};
 
 router.post("/token", (req, res) => {
-  const refreshToken = req.body.token
+  const refreshToken = req.body.token;
 
-  if(!refreshToken) return res.status(401).json("You are not authenticated!");
-  if(!refreshTokens.includes(refreshToken)) return res.status(403).json("Refresh token is invalid!");
+  if (!refreshToken)
+    return res
+      .status(401)
+      .json("You are not authenticated! Missing refresh token!");
+  if (!refreshTokens.includes(refreshToken))
+    return res.status(403).json("Refresh token is invalid!");
 
   jwt.verify(refreshToken, process.env.JWT_SEC, (err, user) => {
     err && console.log(err);
@@ -44,10 +49,10 @@ router.post("/token", (req, res) => {
 
     res.status(200).json({
       accessToken: newAccessToken,
-      refreshToken: newRefreshToken
-    })
+      refreshToken: newRefreshToken,
+    });
   });
-})
+});
 
 // REGISTER
 router.post("/register", async (req, res) => {
@@ -96,6 +101,13 @@ router.post("/login", async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+// LOGOUT
+router.post("/logout", (req, res) => {
+  const refreshToken = req.body.token;
+  refreshTokens = refreshTokens.filter((token) => token !== refreshToken);
+  res.status(200).json("You logged out successfully.");
 });
 
 module.exports = router;

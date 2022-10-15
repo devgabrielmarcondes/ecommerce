@@ -1,4 +1,4 @@
-import axios from "axios";
+/*import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Avatar, Container, Date, Details, Name, Text } from "./styles";
@@ -29,3 +29,4 @@ const Comment = ({ comment }) => {
 };
 
 export default Comment;
+*/
