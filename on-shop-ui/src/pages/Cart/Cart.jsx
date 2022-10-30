@@ -48,7 +48,8 @@ import {
   removeProduct,
 } from "../../redux/cartRedux";
 
-const KEY = process.env.REACT_APP_STRIPE;
+const KEY =
+  "pk_test_51KUaqQBZjSXj8kjW9370h4AbrlGFs97lR3pPLmp9exOcgGaT8FvL2aqlJtUr394u6f5XmvXkkZgkVlxinRmnkBdc007oWK4FK3";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);

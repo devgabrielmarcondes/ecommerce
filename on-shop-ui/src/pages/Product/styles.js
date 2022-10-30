@@ -29,18 +29,22 @@ export const InfoContainer = styled.section`
   flex: 1;
   padding: 0px 50px;
   ${mobile({ padding: "10px" })};
+  margin-top: 40px;
 `;
 
 export const Title = styled.h1`
-  font-weight: 200;
+  font-weight: bold;
+  font-size: 24px;
 `;
 
 export const Desc = styled.p`
+  font-weight: 500;
   margin: 20px 0px;
+  font-size: 16px;
 `;
 
 export const Price = styled.span`
-  font-weight: 100;
+  font-weight: 500;
   font-size: 20px;
 `;
 
@@ -98,6 +102,7 @@ export const AmountContainer = styled.section`
   display: flex;
   align-items: center;
   font-weight: 700;
+  cursor: pointer;
 `;
 
 export const Amount = styled.span`

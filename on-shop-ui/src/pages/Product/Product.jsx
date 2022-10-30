@@ -1,4 +1,5 @@
-import { Add, Remove } from "@material-ui/icons";
+import ArrowCircleRightRoundedIcon from "@material-ui/icons/ArrowRightRounded";
+import ArrowCircleLeftRoundedIcon from "@material-ui/icons/ArrowLeftRounded";
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
@@ -97,9 +98,13 @@ const Product = () => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove onClick={() => handleQuantity("dec")} />
+              <ArrowCircleLeftRoundedIcon
+                onClick={() => handleQuantity("dec")}
+              />
               <Amount>{quantity}</Amount>
-              <Add onClick={() => handleQuantity("inc")} />
+              <ArrowCircleRightRoundedIcon
+                onClick={() => handleQuantity("inc")}
+              />
             </AmountContainer>
             <Button onClick={handleClick}>Add to Cart</Button>
           </AddContainer>

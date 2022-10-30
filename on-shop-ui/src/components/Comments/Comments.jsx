@@ -33,6 +33,7 @@ const Comments = ({ productId }) => {
         desc: newComment,
         productId: productId,
         userId: currentUser._id,
+        token: currentUser.accessToken,
       });
     } catch (err) {
       console.log(err);

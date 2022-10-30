@@ -1,15 +1,11 @@
 const createError = require("../error.js");
-const {
-  verifyToken,
-  verifyTokenAndAuthorization,
-  verifyTokenAndAdmin,
-} = require("./verifyToken");
+const { verifyToken, verifyTokenAndAuthorization } = require("./verifyToken");
 const router = require("express").Router();
 const Comment = require("../models/Comment");
 
 // ADD COMMENT
 
-router.post("/", verifyTokenAndAdmin, async (req, res) => {
+router.post("/", verifyToken, async (req, res) => {
   const newComment = new Comment({ ...req.body, userId: req.body });
   try {
     const savedComment = await newComment.save();

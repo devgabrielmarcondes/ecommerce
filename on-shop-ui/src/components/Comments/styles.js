@@ -1,4 +1,4 @@
-/*import styled from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
   width: auto;
@@ -28,7 +28,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
- text-transform: uppercase;
+  text-transform: uppercase;
   width: 40%;
   border: none;
   padding: 15px 20px;
@@ -41,4 +41,3 @@ export const Button = styled.button`
     cursor: not-allowed;
   }
 `;
-*/
