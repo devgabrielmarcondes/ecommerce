@@ -6,7 +6,8 @@ import Wishlist from "./pages/Wishlist/Wishlist";
 import Success from "./pages/Success/Success";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
-import Orders from "./pages/Orders/Orders";
+import OrderHistory from "./components/OrderHistory/OrderHistory";
+import Order from "./pages/Order/Order";
 import Account from "./pages/Account/Account";
 import {
   BrowserRouter as Router,
@@ -18,6 +19,7 @@ import { useSelector } from "react-redux";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
+  const { quantity } = useSelector((state) => state.cart);
   return (
     <Router>
       <Switch>
@@ -37,6 +39,7 @@ const App = () => {
           <Wishlist />
         </Route>
         <Route path="/success">
+          {!user || quantity !== 0 ? <Redirect to="login" /> : <Success />}
           <Success />
         </Route>
         <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
@@ -46,12 +49,12 @@ const App = () => {
         <Route path="/account">
           {!user ? <Redirect to="login" /> : <Account />}
         </Route>
-        {/* <Route path="/orders">
-          {!user ? <Redirect to="login" /> : <Orders />}
-        </Route> */}
-        {/* <Route path="/order">
+        <Route path="/orders">
+          {!user ? <Redirect to="login" /> : <OrderHistory />}
+        </Route>
+        <Route path="/order/:id">
           {!user ? <Redirect to="/login" /> : <Order />}
-        </Route> */}
+        </Route>
       </Switch>
     </Router>
   );

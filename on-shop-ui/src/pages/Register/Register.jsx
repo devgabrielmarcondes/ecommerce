@@ -59,41 +59,41 @@ const Register = () => {
     <Container>
       <FailedModal display={error === false ? "none" : "flex"} />;
       <Wrapper>
-        <Title>Create an Account</Title>
+        <Title>Criar uma conta</Title>
         <Form>
           <Input
-            placeholder="name"
+            placeholder="Nome"
             onChange={(e) => setName(e.target.value)}
             required
             minLength={2}
           />
           <Input
-            placeholder="last name"
+            placeholder="Sobrenome"
             onChange={(e) => setSurname(e.target.value)}
             required
             minLength={2}
           />
           <Input
-            placeholder="username"
+            placeholder="Nome de usuário"
             onChange={(e) => setUsername(e.target.value)}
             required
             minLength={5}
           />
           <Input
-            placeholder="email"
+            placeholder="Email"
             type="email"
             onChange={(e) => setEmail(e.target.value)}
             required
             minLength={5}
           />
           <Input
-            placeholder="password"
+            placeholder="Senha"
             onChange={(e) => setPassword(e.target.value)}
             required
             minLength={8}
           />
           <Input
-            placeholder="confirm password"
+            placeholder="Confirmar senha"
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
             minLength={8}
@@ -116,8 +116,8 @@ const Register = () => {
               id="false"
               required
             />
-            I have read and agree to the <Link>Privacy policy</Link> and{" "}
-            <Link>Terms</Link> of Zafyr.
+            Eu li e concordo com a <Link>Política de Privacidade</Link> e os{" "} 
+            <Link>Termos de Serviço</Link> da Zafyr.
           </Agreement>
           <Button onClick={handleClick} disabled={isFetching ? true : false}>
             {isFetching ? (
@@ -125,7 +125,7 @@ const Register = () => {
                 style={{ color: "white", width: "24px", height: "24px" }}
               />
             ) : (
-              "REGISTER"
+              "REGISTRAR"
             )}
           </Button>
         </Form>

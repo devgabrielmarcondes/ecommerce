@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { mobile } from "../../responsive";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   width: 100%;
@@ -7,13 +8,12 @@ export const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
-  ${mobile({ display: "none" })};
 `;
 
 export const Arrow = styled.div`
   width: 50px;
   height: 50px;
-  background-color: #fff7f7;
+  background-color: #f7fffb;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -47,10 +47,13 @@ export const Slide = styled.div`
 export const ImgContainer = styled.div`
   flex: 1;
   height: 100%;
+  ${mobile({ display: "none" })};
 `;
 
 export const Image = styled.img`
   height: 80%;
+  filter: saturate(75%);
+  ${mobile({ display: "none" })};
 `;
 
 export const InfoContainer = styled.div`
@@ -72,9 +75,23 @@ export const Desc = styled.p`
 `;
 
 export const Button = styled.button`
-    padding: 10px;
-    font-size;
-    background-color: transparent;
-    cursor: pointer;
-    text-transform: uppercase;
+  padding: 10px;
+  font-size: 20px;
+  background-color: transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+    color: inherit;
+  }
 `;

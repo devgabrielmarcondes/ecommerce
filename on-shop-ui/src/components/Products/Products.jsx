@@ -13,8 +13,8 @@ const Products = ({ title, filters, sort }) => {
       try {
         const res = await axios.get(
           title
-            ? `http://localhost:5000/api/products?title=${title}`
-            : "http://localhost:5000/api/products"
+            ? window.location.origin + `/api/products?title=${title}`
+            : window.location.origin + "/api/products"
         );
         setProducts(res.data);
       } catch (err) {}

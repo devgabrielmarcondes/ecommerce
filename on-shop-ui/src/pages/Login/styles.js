@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { mobile } from "../../responsive";
+import { Link } from "react-router-dom"
 
 export const Container = styled.div`
   width: 100vw;
@@ -15,6 +16,9 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+
+
 
 export const Wrapper = styled.div`
   width: 25%;
@@ -64,7 +68,7 @@ export const Button = styled.button`
   width: 40%;
   border: none;
   padding: 15px 20px;
-  background-color: teal;
+  background-color:  #0A5C17;
   color: white;
   cursor: pointer;
   margin-bottom: 10px;
@@ -74,12 +78,17 @@ export const Button = styled.button`
   }
 `;
 
-export const Link = styled.a`
-  text-transform: uppercase;
-  margin: 5px 0px;
-  font-size: 12px;
-  text-decoration: underline;
-  cursor: pointer;
+export const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: inherit;
+    text-transform: uppercase;
+    margin: 5px 0px;
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+    &:focus, &:hover, &:visited, &:link, &:active {
+        color: inherit;
+    }
 `;
 
 export const Error = styled.span`

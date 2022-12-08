@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { UserModal } from "../../components/Modal/UserModal/UserModal";
 
 import {
@@ -15,6 +15,7 @@ import {
   Input,
   Logo,
   MenuItem,
+  StyledLink
 } from "./styles";
 import { Search } from "@material-ui/icons";
 
@@ -41,16 +42,16 @@ const Navbar = () => {
     <Container>
       <Wrapper>
         <Left>
-          <Language>EN</Language>
+          <Language>PT-BR</Language>
           <SearchContainer>
             <Form onSubmit={submitHandler}>
               <Input
                 onChange={queryChangeHandler}
-                placeholder="Search"
+                placeholder="Buscar"
                 name="query"
               />
               <Search
-                style={{ color: "gray", fontSize: "16px" }}
+                style={{ color: "#64616B", fontSize: "16px" }}
                 type="submit"
               />
             </Form>
@@ -67,16 +68,16 @@ const Navbar = () => {
         </Center>
         <Right>
           {!currentUser ? (
-            <Link to="register">
-              <MenuItem>Register</MenuItem>
-            </Link>
+            <StyledLink to="register">
+              <MenuItem>Registrar</MenuItem>
+            </StyledLink>
           ) : (
             ""
           )}
           {!currentUser ? (
-            <Link to="login">
-              <MenuItem>Sign In</MenuItem>
-            </Link>
+            <StyledLink to="login">
+              <MenuItem>Login</MenuItem>
+            </StyledLink>
           ) : (
             ""
           )}

@@ -113,7 +113,7 @@ const UpdateUserModal = () => {
           </InputContainer>
 
           <Button type="submit" disabled={loading ? true : false}>
-            Update
+            Atualizar
           </Button>
         </Form>
       </FormContainer>

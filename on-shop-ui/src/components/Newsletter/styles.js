@@ -13,6 +13,7 @@ export const Container = styled.div`
 export const Title = styled.h1`
   font-size: 50px;
   margin-bottom: 20px;
+  text-align: center;
 `;
 
 export const Desc = styled.p`
@@ -43,7 +44,7 @@ export const Input = styled.input`
 export const Button = styled.button`
   flex: 1;
   border: none;
-  background-color: teal;
+  background-color: #0a5c17;
   color: white;
   cursor: pointer;
 `;

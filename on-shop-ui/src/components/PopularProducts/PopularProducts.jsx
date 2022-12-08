@@ -12,8 +12,8 @@ const PopularProducts = ({ path, description }) => {
       try {
         const res = await publicRequest.get(
           path
-            ? `http://localhost:5000/api/products?path=${path}`
-            : "http://localhost:5000/api/products"
+            ? window.location.origin + `/api/products?path=${path}`
+            : window.location.origin +  "/api/products"
         );
         setProducts(res.data);
       } catch (err) {

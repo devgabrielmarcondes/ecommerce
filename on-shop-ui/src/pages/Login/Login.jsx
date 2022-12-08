@@ -12,7 +12,7 @@ import {
   Agreement,
   CheckBox,
   Button,
-  Link,
+  StyledLink,
 } from "./styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
@@ -31,20 +31,20 @@ const Login = () => {
     <Container>
       <FailedModal display={error === false ? "none" : "flex"} />
       <Wrapper>
-        <Title>Sign in</Title>
+        <Title>LOGIN</Title>
         <Form>
           <Input
-            placeholder="username"
+            placeholder="Nome de Usuário"
             onChange={(e) => setUsername(e.target.value)}
           />
           <Input
-            placeholder="password"
+            placeholder="Senha"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
           <Agreement htmlFor="log" style={{ marginTop: "10px" }}>
             <CheckBox type="checkbox" id="log" defaultChecked />
-            Keep me logged in
+            Mantenha-me conectado
           </Agreement>
           <Button onClick={handleClick} disabled={isFetching ? true : false}>
             {isFetching ? (
@@ -55,8 +55,8 @@ const Login = () => {
               "LOGIN"
             )}
           </Button>
-          <Link>Don't remember your password?</Link>
-          <Link>Create a new account</Link>
+          <StyledLink>Não lembra sua senha?</StyledLink>
+          <StyledLink to={`/register`}>Criar uma nova conta</StyledLink>
         </Form>
       </Wrapper>
     </Container>

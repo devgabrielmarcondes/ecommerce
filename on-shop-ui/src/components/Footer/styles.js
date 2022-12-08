@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { mobile, tablet } from "../../responsive";
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   display: flex;
@@ -15,6 +16,17 @@ export const Left = styled.section`
   text-align: center;
   padding: 20px;
 `;
+
+export const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: inherit;
+
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+        color: inherit;
+    }
+`;
+
 
 export const Logo = styled.h1`
   text-transform: uppercase;

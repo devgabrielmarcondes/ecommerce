@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
 export const Title = styled.h1`
   font-weight: 300;
   text-align: center;
+  margin-bottom: 20px;
 `;
 
 export const Top = styled.section`
@@ -194,4 +195,10 @@ export const Button = styled.button`
   color: white;
   font-weight: 600;
   cursor: pointer;
+
+  &:disabled {
+    background-color: grey;
+    color: white;
+    cursor: not-allowed;
+  }
 `;

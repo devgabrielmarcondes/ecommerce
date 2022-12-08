@@ -42,7 +42,7 @@ const Account = () => {
       <Promotion />
       <Navbar />
       <MainContainer>
-        <Title>Account</Title>
+        <Title>Conta</Title>
         <TextContainer>
           <Left>
             <Action
@@ -51,14 +51,14 @@ const Account = () => {
               }}
             >
               <ArrowRightAltIcon style={{ transform: "rotate(180deg)" }} />
-              <Text>back</Text>
+              <Text>Voltar</Text>
             </Action>
           </Left>
           {currentUser.isAdmin && (
             <Right>
               <Action>
                 <Link href="#">
-                  <Text>admin panel</Text>
+                  <Text>Painel de administrador</Text>
                   <ArrowRightAltIcon style={{ marginLeft: "5px" }} />
                 </Link>
               </Action>
@@ -68,7 +68,7 @@ const Account = () => {
         <TextContainer style={{ marginBottom: "30px" }}>
           <Center>
             <Navigation className="active">
-              <Text>Account Settings</Text>
+              <Text>Configurações</Text>
             </Navigation>
             <Divider></Divider>
             <Navigation>
@@ -77,16 +77,16 @@ const Account = () => {
                   history.push("/orders");
                 }}
               >
-                Order History
+                Histórico de Pedidos
               </Text>
             </Navigation>
           </Center>
         </TextContainer>
         <Wrapper>
-          <Header>User Info</Header>
+          <Header>Informações de Usuário</Header>
           <InfoContainer>
             <Category>
-              <InfoText>First Name:</InfoText>
+              <InfoText>Primeiro nome:</InfoText>
             </Category>
             <Value>
               <InfoText>{currentUser?.name}</InfoText>
@@ -97,7 +97,7 @@ const Account = () => {
           </InfoContainer>
           <InfoContainer>
             <Category>
-              <InfoText>Last Name:</InfoText>
+              <InfoText>Sobrenome:</InfoText>
             </Category>
             <Value>
               <InfoText>{currentUser?.surname}</InfoText>
@@ -108,7 +108,7 @@ const Account = () => {
           </InfoContainer>
           <InfoContainer>
             <Category>
-              <InfoText>Username:</InfoText>
+              <InfoText>Nome de usuário:</InfoText>
             </Category>
             <Value>
               <InfoText>{currentUser?.username}</InfoText>
@@ -119,7 +119,7 @@ const Account = () => {
           </InfoContainer>
           <InfoContainer>
             <Category>
-              <InfoText>Email:</InfoText>
+              <InfoText>E-mail:</InfoText>
             </Category>
             <Value>
               <InfoText>{currentUser?.email}</InfoText>
@@ -130,7 +130,7 @@ const Account = () => {
           </InfoContainer>
           <InfoContainer>
             <Category>
-              <InfoText>Password:</InfoText>
+              <InfoText>Senha:</InfoText>
             </Category>
             <Value>
               <InfoText>••••••••••</InfoText>

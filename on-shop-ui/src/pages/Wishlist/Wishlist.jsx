@@ -44,7 +44,7 @@ const Wishlist = () => {
       <Promotion />
       <Navbar />
       <Wrapper>
-        <Title>My Wishlist</Title>
+        <Title>Seus favoritos</Title>
         <TextContainer>
           <Left>
             <Action
@@ -53,7 +53,7 @@ const Wishlist = () => {
               }}
             >
               <ArrowRightAltIcon style={{ transform: "rotate(180deg)" }} />
-              <Text>Back</Text>
+              <Text>Voltar</Text>
             </Action>
           </Left>
         </TextContainer>
@@ -61,7 +61,7 @@ const Wishlist = () => {
           <WishWrapper>
             {products?.length === 0 && (
               <TextContainer style={{ margin: "50px auto" }}>
-                <Text>You do not have any wishlist</Text>
+                <Text>Você não possui favoritos</Text>
               </TextContainer>
             )}
             {products?.map((item) => (
@@ -70,7 +70,7 @@ const Wishlist = () => {
           </WishWrapper>
         </WishContainer>
       </Wrapper>
-      <PopularProducts description="PEOPLE ALSO VIEW THESE" />
+      <PopularProducts description="CONFIRA TAMBÉM" />
       <Newsletter />
       <Footer />
     </Container>

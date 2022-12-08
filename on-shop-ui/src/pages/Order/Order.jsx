@@ -1,13 +1,13 @@
-import Announcement from "../components/Announcement/Announcement";
-import Navbar from "../components/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
+import Announcement from "../../components/Announcement/Announcement";
+import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 import { useLocation, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { openModal } from "../redux/modalRedux";
-import { formatAmount } from "../utility/formatAmount";
-import { formatDate } from "../utility/formatDate";
-import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import UpdateOrderModal from "../components/Modal/UpdateOrderModal";
+import { openModal } from "../../redux/modalRedux";
+import { formatAmount } from "../../utility/formatAmount";
+import { formatDate } from "../../utility/formatDate";
+import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
+import UpdateOrderModal from "../../components/Modal/UpdateOrderModal/UpdateOrderModal";
 
 import {
   Action,
@@ -60,10 +60,10 @@ const Order = () => {
   return (
     <Container>
       <UpdateOrderModal />
-      <Announcement />
       <Navbar />
+      <Announcement />
       <Wrapper>
-        <Title>Order #{item._id.substring(0, 8)}</Title>
+        <Title>Pedido #{item._id.substring(0, 8)}</Title>
         <TextContainer>
           <Left>
             <Action
@@ -72,7 +72,7 @@ const Order = () => {
               }}
             >
               <ArrowRightAltIcon style={{ transform: "rotate(180deg)" }} />
-              <Text style={{ marginLeft: "5px" }}>back</Text>
+              <Text style={{ marginLeft: "5px" }}>Voltar</Text>
             </Action>
           </Left>
           <Right style={{ padding: "0" }}>
@@ -83,17 +83,17 @@ const Order = () => {
                   bg={"#f8f8f8"}
                   onClick={() => handleModal("Cancel")}
                 >
-                  Cancel Order
+                  Cancelar Pedido
                 </Button>
               </Action>
-            ) : status === "Shipped" ? (
+            ) : status === "Entregado" ? (
               <Action>
                 <Button
                   color={"white"}
                   bg={"#110f12"}
                   onClick={() => handleModal("Receive")}
                 >
-                  Order Received
+                  Pedido Recebido
                 </Button>
               </Action>
             ) : null}
@@ -101,13 +101,13 @@ const Order = () => {
         </TextContainer>
         <OrderContainer>
           <ProductContainer>
-            <Subtitle>Ordered Shoes</Subtitle>
+            <Subtitle>Camisetas pedidas</Subtitle>
             <TextContainer>
               <Left>
-                <Text>Product</Text>
+                <Text>Produto</Text>
               </Left>
               <Center>
-                <Text>Amount</Text>
+                <Text>Quantidade</Text>
               </Center>
               <Right>
                 <Text>Status</Text>
@@ -131,7 +131,6 @@ const Order = () => {
                         </ProductImage>
                         <ProductDetails>
                           <ProductName>{i.productId.name}</ProductName>
-                          <ProductInfo>{i.productId.brand}</ProductInfo>
                           <ProductInfo> {i.productId.size} US</ProductInfo>
                           <ProductColor>
                             <ColorOutline>

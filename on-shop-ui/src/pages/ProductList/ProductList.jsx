@@ -36,37 +36,40 @@ const ProductList = () => {
   };
   return (
     <Container>
-      <Announcement />
       <Navbar />
-      <Title>{titleText}</Title>
+      <Announcement />
+      <Title>
+        <span>Você buscou por: </span>
+        {titleText}
+      </Title>
       <FilterContainer>
         <Filter>
-          <FilterText>Filter Products:</FilterText>
+          <FilterText>Filtrar produtos:</FilterText>
           <Select name="color" onChange={handleFilters}>
-            <Option disabled>Color</Option>
-            <Option>white</Option>
-            <Option>black</Option>
-            <Option>red</Option>
-            <Option>blue</Option>
-            <Option>yellow</Option>
-            <Option>green</Option>
-            <Option>gray</Option>
+            <Option>Cor</Option>
+            <Option>Branco</Option>
+            <Option>Preto</Option>
+            <Option>Vermelho</Option>
+            <Option>Azul</Option>
+            <Option>Amarelo</Option>
+            <Option>Verde</Option>
+            <Option>Cinza</Option>
           </Select>
           <Select name="size" onChange={handleFilters}>
-            <Option disabled>Size</Option>
-            <Option>XS</Option>
-            <Option>S</Option>
+            <Option>Tamanho</Option>
+            <Option>PP</Option>
+            <Option>P</Option>
             <Option>M</Option>
-            <Option>L</Option>
-            <Option>XL</Option>
+            <Option>G</Option>
+            <Option>GG</Option>
           </Select>
         </Filter>
         <Filter>
-          <FilterText>Sort Products:</FilterText>
+          <FilterText>Filtrar Produtos:</FilterText>
           <Select onChange={(e) => setSort(e.target.value)}>
-            <Option value="newest">Newest</Option>
-            <Option value="asc">Price (asc)</Option>
-            <Option value="desc">Price (desc)</Option>
+            <Option value="newest">Mais recente</Option>
+            <Option value="asc">Preço (asc)</Option>
+            <Option value="desc">Preço(desc)</Option>
           </Select>
         </Filter>
       </FilterContainer>

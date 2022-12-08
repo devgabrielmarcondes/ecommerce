@@ -53,10 +53,13 @@ const KEY =
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  const currentUser = useSelector((state) => state.user);
   const [stripeToken, setStripeToken] = useState(null);
   const [remove, setRemove] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
+
+  const frete = 5.99;
 
   const handleQuantity = (type, product) => {
     const price = product.price;
@@ -96,18 +99,19 @@ const Cart = () => {
   console.log(stripeToken);
   return (
     <Container>
-      <Announcement />
       <Navbar />
+      <Announcement />
       <Wrapper>
-        <Title>Your bag</Title>
-        <Top>
-          <TopButton>Continue Shopping</TopButton>
+        <Title>Seu carrinho</Title>
+        {/* <Top> 
+          <TopButton>Continue comprando</TopButton>
           <TopTexts>
-            <TopText>Shopping Bag(2)</TopText>
-            <TopText>Your Whitelist</TopText>
+            <TopText>Carrinho</TopText>
+            <TopText>Sua lista de desejos</TopText>
           </TopTexts>
-          <TopButton type="field">Checkout now</TopButton>
+          <TopButton type="field">Continue comprando</TopButton>
         </Top>
+        */}
         <Bottom>
           <Info>
             {cart.products.map((product) => (
@@ -116,14 +120,14 @@ const Cart = () => {
                   <Image src={product.img} alt={product.desc} />
                   <Details>
                     <ProductName>
-                      <b>Product:</b> {product.title}
+                      <b>Produto:</b> {product.title}
                     </ProductName>
                     <ProductId>
                       <b>ID:</b> {product._id}
                     </ProductId>
                     <ProductColor color={product.color} />
                     <ProductSize>
-                      <b>Size:</b> {product.size}
+                      <b>Tamanho:</b> {product.size}
                     </ProductSize>
                   </Details>
                 </ProductDetail>
@@ -146,11 +150,11 @@ const Cart = () => {
                     </QuantityButton>
                   </ProductAmountContainer>
                   <ProductPrice>
-                    $ {product.price * product.quantity}
+                    R$ {(product.price * product.quantity).toFixed(2)}
                   </ProductPrice>
                   <RemoveContainer>
                     <Remove onClick={() => handleRemove(product)}>
-                      Remove
+                      Remover
                     </Remove>
                   </RemoveContainer>
                 </PriceDetail>
@@ -159,34 +163,50 @@ const Cart = () => {
             <Hr />
           </Info>
           <Summary>
-            <SummaryTitle>Order Summary</SummaryTitle>
+            <SummaryTitle>Resumo do Pedido</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+              <SummaryItemPrice>R$ {cart.total.toFixed(2)}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
-              <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$ 5.90</SummaryItemPrice>
+              <SummaryItemText>Frete Estimado</SummaryItemText>
+              <SummaryItemPrice>
+                R$ {cart.total.toFixed(2) > 50 ? "0.00" : `${frete.toFixed(2)}`}
+              </SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
-              <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>$ -5.90</SummaryItemPrice>
+              <SummaryItemText>Desconto do Frete</SummaryItemText>
+              <SummaryItemPrice>
+                R${" "}
+                {cart.total.toFixed(2) > 50 ? `-${frete.toFixed(2)}` : "0.00"}
+              </SummaryItemPrice>
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+              <SummaryItemPrice>
+                R${" "}
+                {cart.total.toFixed(2) > 50
+                  ? cart.total.toFixed(2)
+                  : Number(cart.total.toFixed(2)) + Number(frete.toFixed(2))}
+              </SummaryItemPrice>
             </SummaryItem>
             <StripeCheckout
-              name="Lama Shop"
-              image="https://www.inbrasilexperiencias.com.br/catalogo-completo/wp-content/uploads/2020/12/Zara.jpg"
+              name="Zafyr"
+              image="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fclipart-library.com%2Fimages_k%2Fstack-of-cash-transparent%2Fstack-of-cash-transparent-13.jpg&f=1&nofb=1&ipt=258339b8aac2c2fa7ae9c9d7a0060965a86c6ba033d2dafc2562694cd007fba7&ipo=images"
               billingAddress
               shippingAddress
-              description={`Total price: ${cart.total}`}
+              description={`Preço total: R${Number(cart.total.toFixed(2))}`}
               amount={cart.total * 100}
               token={onToken}
               stripeKey={KEY}
             >
-              <Button>Checkout Now</Button>
+              <Button
+                disabled={
+                  currentUser === null || cart.quantity === 0 ? true : false
+                }
+              >
+                IR PARA O CHECKOUT
+              </Button>
             </StripeCheckout>
           </Summary>
         </Bottom>

@@ -13,10 +13,10 @@ import {
 const Newsletter = () => {
   return (
     <Container>
-      <Title>Newsletter</Title>
-      <Desc>Get timely updates from your favorite products.</Desc>
+      <Title>Notícias Zafyr</Title>
+      <Desc>Tenha atualizações diárias dos seus produtos favoritos.</Desc>
       <InputContainer>
-        <Input placeholder="Your email" />
+        <Input placeholder="Seu email" />
         <Button>
           <Send />
         </Button>

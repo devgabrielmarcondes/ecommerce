@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   flex: 1;
   margin: 3px;
-  height: 70vh;
+  height: 60vh;
   position: relative;
 `;
 
@@ -11,6 +11,7 @@ export const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(65%);
 `;
 
 export const Info = styled.section`
@@ -34,7 +35,7 @@ export const Button = styled.button`
   border: none;
   padding: 10px;
   background-color: white;
-  color: gray;
+  color: grey;
   cursor: pointer;
   font-weight: 600;
 `;

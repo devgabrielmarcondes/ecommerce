@@ -55,8 +55,8 @@ const Success = () => {
   }, [cart, data, user, history.push, dispatch]);
   return (
     <MainContainer>
-      <Announcement />
       <Navbar />
+      <Announcement />
       <Container>
         <Message>
           <Icon>
@@ -64,11 +64,12 @@ const Success = () => {
           </Icon>
           <Header>Your payment was successful!</Header>
           <Subheader>
-            Your order was confirmed. You will receive an automated transaction
-            receipt shortly via email. Thank you for shopping
+            Seu pedido foi confirmado. Você receberá uma receita de transação
+            automática em alguns instantes via email. Obrigado por fazer compras
+            na Zafyr.
           </Subheader>
           <Receipt href={data?.receipt_url} target="_blank">
-            View Receipt
+            Ver receita
             <ArrowRightAltIcon />
           </Receipt>
           <Action>
@@ -79,7 +80,7 @@ const Success = () => {
                 history.push("/orders");
               }}
             >
-              View orders
+              Ver pedidos
             </Button>
             <Button
               bg={"black"}
@@ -88,7 +89,7 @@ const Success = () => {
                 history.push("/products/instock");
               }}
             >
-              Shop more
+              Continuar compras
             </Button>
           </Action>
         </Message>

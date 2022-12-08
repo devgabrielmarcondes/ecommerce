@@ -5,7 +5,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   z-index: 10;
-  background-color: #f8f8f8;
+  background-color:  #D8D7DB;
   position: fixed;
   display: ${(prop) => prop.display};
   justify-content: center;
@@ -20,7 +20,7 @@ const Header = styled.h3`
 const Processing = ({ display }) => {
   return (
     <Container display={display}>
-      <Header>Payment is processing...</Header>
+      <Header>O pagamento está processando...</Header>
     </Container>
   );
 };

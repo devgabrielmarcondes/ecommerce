@@ -17,10 +17,10 @@ export const login = async (dispatch, user) => {
     const res = await publicRequest.post("/auth/login", user);
     const userId = await res.data._id;
     const wishlistResponse = await publicRequest.get(`wishlist/${userId}`);
-    // const ordersResponse = await publicRequest.get(`orders/${userId}`);
+    const ordersResponse = await publicRequest.get(`orders/${userId}`);
     dispatch(loginSuccess(res.data));
     dispatch(addToWishlist(wishlistResponse.data));
-    // dispatch(addOrder(ordersResponse.data));
+    dispatch(addOrder(ordersResponse.data));
   } catch (err) {
     dispatch(loginFailure());
   }

@@ -29,7 +29,7 @@ const Comments = ({ productId }) => {
     const newComment = textRef.current.value;
 
     try {
-      await axios.post(`http://localhost:5000/api/comments/`, {
+      await axios.post(window.location.origin + `api/comments/`, {
         desc: newComment,
         productId: productId,
         userId: currentUser._id,

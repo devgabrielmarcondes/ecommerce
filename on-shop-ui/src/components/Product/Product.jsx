@@ -63,7 +63,7 @@ const Product = ({ item }) => {
       <Info>
         <Left>
           <Name>{item.title}</Name>
-          <InfoText>{item.price}</InfoText>
+          <InfoText>R$ {item.price}</InfoText>
         </Left>
         <Right>
           {user && (

@@ -132,7 +132,7 @@ export const EditButton = styled.div`
 `;
 export const Header = styled.h2`
   text-align: center;
-  margin: 10px auto;
+  margin: 40px auto;
   font-weight: 300;
   ${mobile({ fontSize: "24px" })}
 `;

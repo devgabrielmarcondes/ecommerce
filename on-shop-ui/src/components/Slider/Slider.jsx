@@ -13,6 +13,7 @@ import {
   Title,
   Desc,
   Button,
+  StyledLink,
 } from "./styles";
 
 const Slider = () => {
@@ -38,7 +39,9 @@ const Slider = () => {
             <InfoContainer>
               <Title>{item.title}</Title>
               <Desc>{item.desc}</Desc>
-              <Button>Shop now</Button>
+              <StyledLink to={`/products/` + item.title}>
+                <Button>COMPRE AGORA</Button>
+              </StyledLink>
             </InfoContainer>
           </Slide>
         ))}

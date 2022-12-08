@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { mobile, tablet } from "../../responsive";
+import { Link } from "react-router-dom"
 
 export const Container = styled.div`
   height: 60px;
@@ -57,7 +58,18 @@ export const Logo = styled.h1`
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
+  text-decoration: underline;
   ${mobile({ fontSize: "24px" })};
+`;
+
+export const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: inherit;
+
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+        color: inherit;
+    }
 `;
 
 export const Right = styled.section`
@@ -69,9 +81,10 @@ export const Right = styled.section`
 `;
 
 export const MenuItem = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
   text-transform: uppercase;
   margin-left: 25px;
+  margin-top: 5px;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })};
 `;

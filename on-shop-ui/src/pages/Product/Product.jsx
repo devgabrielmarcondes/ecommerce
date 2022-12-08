@@ -79,16 +79,16 @@ const Product = () => {
         <InfoContainer>
           <Title>{product.title}</Title>
           <Desc>{product.desc}</Desc>
-          <Price>$ {product.price}</Price>
+          <Price>R$ {product.price}</Price>
           <FilterContainer>
             <Filter>
-              <FilterTitle>Color</FilterTitle>
+              <FilterTitle>Cor</FilterTitle>
               {product.color?.map((c) => (
                 <FilterColor color={c} key={c} onClick={() => setColor(c)} />
               ))}
             </Filter>
             <Filter>
-              <FilterTitle>Size</FilterTitle>
+              <FilterTitle>Tamanho</FilterTitle>
               <FilterSize onChange={(e) => setSize(e.target.value)}>
                 {product.size?.map((s) => (
                   <FilterSizeOption key={s}>{s}</FilterSizeOption>
@@ -106,12 +106,12 @@ const Product = () => {
                 onClick={() => handleQuantity("inc")}
               />
             </AmountContainer>
-            <Button onClick={handleClick}>Add to Cart</Button>
+            <Button onClick={handleClick}>Adicionar ao Carrinho</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
       {/* <Comments productId={product._id} /> */}
-      <PopularProducts description="PEOPLE ALSO VIEW THESE" />
+      <PopularProducts description="CONFIRA TAMBÉM" />
       <Newsletter />
       <Footer />
     </Container>

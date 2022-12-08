@@ -15,17 +15,17 @@ const FailedModal = ({ display }) => {
     <Container display={display}>
       <Wrapper>
         {path === "register" ? (
-          <Header>Unable to register</Header>
+          <Header>Não foi possível efetuar o registro</Header>
         ) : (
-          <Header>Unable to login</Header>
+          <Header>Não foi possível efetuar o login</Header>
         )}
         {path === "register" ? (
           <Subheader>
-            The username/email is already taken. Please try again.
+            O usuário/email já existe. Por favor, tente novamente.
           </Subheader>
         ) : (
           <Subheader>
-            Your username/password is incorrect. Please try again.
+            Usuário ou senha incorretas. Por favor, tente novamente.
           </Subheader>
         )}
         <Button onClick={closeModal}>Okay</Button>

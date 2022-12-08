@@ -24,6 +24,7 @@ import {
   ContactItem,
   Payment,
   Text,
+  StyledLink,
 } from "./styles";
 
 const Footer = () => {
@@ -52,21 +53,45 @@ const Footer = () => {
         </SocialContainer>
       </Left>
       <Center>
-        <Title>Useful Links</Title>
+        <Title>Links Úteis</Title>
         <List>
-          <ListItem>Home</ListItem>
-          <ListItem>Cart</ListItem>
-          <ListItem>Man Fashion</ListItem>
-          <ListItem>Woman Fashion</ListItem>
-          <ListItem>Accessories</ListItem>
-          <ListItem>My Account</ListItem>
+          <ListItem>
+            <StyledLink to={`/`}>
+            Home
+          </StyledLink>
+          </ListItem>
+          <ListItem>
+          <StyledLink to={`/cart`}>
+            Carrinho
+          </StyledLink>
+          </ListItem>
+          <ListItem>
+            <StyledLink to={`/products/men`}>
+            Moda Masculina
+          </StyledLink>
+          </ListItem>
+          <ListItem>
+            <StyledLink to={`/products/women`}>
+            Moda Feminina
+          </StyledLink>
+          </ListItem>
+          <ListItem>
+            <StyledLink to={`/products/acessories`}>
+            Acessórios
+          </StyledLink>
+          </ListItem>
+          <ListItem>
+            <StyledLink to={`/account`}>
+            Minha Conta
+          </StyledLink>
+          </ListItem>
         </List>
       </Center>
       <Right>
-        <Title>Contact</Title>
+        <Title>Contato</Title>
         <ContactItem>
           <Room style={{ marginRight: "10px" }} />
-          <Text>622 Dixie Path, South Tobinchester 98336</Text>
+          <Text>Av. Jornalista Roberto Marinho, 80 - Cidade Monções, São Paulo - SP</Text>
         </ContactItem>
         <ContactItem>
           <Phone style={{ marginRight: "10px" }} />
@@ -74,7 +99,7 @@ const Footer = () => {
         </ContactItem>
         <ContactItem>
           <MailOutline style={{ marginRight: "10px" }} />
-          <Text>contact@gab_mrcd</Text>
+          <Text>contato@gab_mrcd</Text>
         </ContactItem>
         <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
       </Right>

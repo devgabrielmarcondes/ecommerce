@@ -62,6 +62,11 @@ const cartSlice = createSlice({
       state.total = 0;
       state.products = [];
     },
+    logoutCart: (state) => {
+      state.quantity = 0;
+      state.total = 0;
+      state.products = [];
+    },
   },
 });
 
@@ -71,5 +76,6 @@ export const {
   addProductQuantity,
   subtractProductQuantity,
   paidProduct,
+  logoutCart,
 } = cartSlice.actions;
 export default cartSlice.reducer;

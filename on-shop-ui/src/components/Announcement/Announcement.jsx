@@ -3,7 +3,11 @@ import React from "react";
 import { Container } from "./styles";
 
 const Announcement = () => {
-  return <Container>Super Deal! Free Shipping on Orders Over $50</Container>;
+  return (
+    <Container>
+      MEEEEEEEGA PROMOÇÃO! FRETE GRÁTIS PARA COMPRAS ACIMA DE 50 REAIS
+    </Container>
+  );
 };
 
 export default Announcement;

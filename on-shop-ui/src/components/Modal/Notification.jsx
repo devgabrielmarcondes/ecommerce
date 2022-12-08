@@ -1,3 +1,4 @@
+import React from "react";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
@@ -20,7 +21,7 @@ const Notification = ({ open, setOpen, type }) => {
         <MuiAlert
           onClose={handleClose}
           style={{
-            backgroundColor: "black",
+            backgroundColor: "coral",
             marginTop: "80px",
           }}
           severity={
@@ -35,14 +36,14 @@ const Notification = ({ open, setOpen, type }) => {
           variant="filled"
         >
           {type === "add"
-            ? "Adicionado com sucesso!"
+            ? "Successfully added!"
             : type === "update"
-            ? "Atualizado com sucesso!"
+            ? "Successfully updated!"
             : type === "remove"
-            ? "Removido com sucesso!"
+            ? "Successfully removed!"
             : type === "remind"
-            ? "Por favor selecione a cor e o tamanho primeiro."
-            : "Copiado para a área de transferência!"}
+            ? "Please select size and color first."
+            : "Copied to clipboard!"}
         </MuiAlert>
       </Snackbar>
     </div>

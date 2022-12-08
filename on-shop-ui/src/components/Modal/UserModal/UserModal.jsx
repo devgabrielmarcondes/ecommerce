@@ -13,6 +13,7 @@ import LogoutIcon from "@material-ui/icons/ExitToApp";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../../redux/userRedux";
+import { logoutCart } from "../../../redux/cartRedux";
 import { useDispatch, useSelector } from "react-redux";
 
 const Icon = styled.div``;
@@ -24,7 +25,7 @@ export const UserMobileModal = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleSignOut = () => {
-    dispatch(logout());
+    dispatch(logout() && logoutCart());
     history.push("/");
   };
   const handleClick = (event) => {
@@ -47,7 +48,7 @@ export const UserMobileModal = () => {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           sx={{
-            color: "#110f12",
+            color: " #18171C",
             bgcolor: "white",
             width: 28,
             height: 28,
@@ -99,7 +100,7 @@ export const UserMobileModal = () => {
           <ListItemIcon>
             <PersonOutlinedIcon />
           </ListItemIcon>
-          Account
+          Conta
         </MenuItem>
         <MenuItem
           style={{ transform: "scale(0.9)" }}
@@ -110,7 +111,7 @@ export const UserMobileModal = () => {
           <ListItemIcon>
             <ShoppingBagOutlinedIcon />
           </ListItemIcon>
-          Bag
+          Carrinho
         </MenuItem>
         <MenuItem
           style={{ transform: "scale(0.9)" }}
@@ -121,7 +122,7 @@ export const UserMobileModal = () => {
           <ListItemIcon>
             <PlaylistAddCheckOutlinedIcon />
           </ListItemIcon>
-          Orders
+          Pedidos
         </MenuItem>
         <MenuItem
           style={{ transform: "scale(0.9)" }}
@@ -132,7 +133,7 @@ export const UserMobileModal = () => {
           <ListItemIcon>
             <FavoriteBorderOutlinedIcon />
           </ListItemIcon>
-          Wishlist
+          Lista de Desejos
         </MenuItem>
         <Divider />
         <MenuItem
@@ -142,7 +143,7 @@ export const UserMobileModal = () => {
           <ListItemIcon>
             <LogoutIcon />
           </ListItemIcon>
-          Sign Out
+          Sair
         </MenuItem>
       </Menu>
     </React.Fragment>
@@ -168,7 +169,7 @@ export const UserModal = () => {
   };
   const handleSignOut = async () => {
     try {
-      await axios.post("http://localhost:5000/api/auth/logout", {
+      await axios.post(window.location.origin + "/api/auth/logout", {
         token: user.refreshToken,
       });
       dispatch(logout());
@@ -238,7 +239,7 @@ export const UserModal = () => {
           <ListItemIcon>
             <PersonOutlinedIcon />
           </ListItemIcon>
-          Account
+          Conta
         </MenuItem>
         <MenuItem
           style={{ transform: "scale(0.9)" }}
@@ -249,7 +250,7 @@ export const UserModal = () => {
           <ListItemIcon>
             <PlaylistAddCheckOutlinedIcon />
           </ListItemIcon>
-          Orders
+          Pedidos
         </MenuItem>
 
         <Divider />
@@ -260,7 +261,7 @@ export const UserModal = () => {
           <ListItemIcon>
             <LogoutIcon />
           </ListItemIcon>
-          Sign Out
+          Sair
         </MenuItem>
       </Menu>
     </React.Fragment>
