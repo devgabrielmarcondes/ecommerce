@@ -11,6 +11,7 @@ const commentRoute = require("./routes/comments");
 const wishlistRoute = require("./routes/wishlist");
 const cors = require("cors");
 const app = express();
+const path = require('path')
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
 
 app.use(cors());
 app.use(express.json());
@@ -31,7 +33,12 @@ app.use("/api/orders", orderRoute);
 app.use("/api/checkout", stripeRoute);
 app.use("/api/comments", commentRoute);
 app.use("/api/wishlist", wishlistRoute);
+app.use(express.static(path.join(__dirname + "/build")))
+app.get('*', (req,res) =>{
+  res.sendFile(path.join(__dirname+'/build/index.html'));
+});
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("Backend server is running on port 5000");
 });
+
