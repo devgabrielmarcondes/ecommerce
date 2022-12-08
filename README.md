@@ -3,10 +3,10 @@
 
 ## 👥 Integrantes
 
-- Gabriel Marcondes dos Santos
-- Lucas Alves Fernandes
-- Rodrigo de Andrade Rodrigues
-- Edgar Messias
+- Gabriel Marcondes dos Santos;
+- Lucas Alves Fernandes;
+- Rodrigo de Andrade Rodrigues;
+- Edgar Messias.
 
 ## 🖊️ Nome do Projeto
 
