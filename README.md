@@ -16,7 +16,7 @@ Zafyr
 
 ### Objetivo Geral
 
-Tem-se como alvo do projeto facilitar o processo de compra e venda de cosméticos como camisetas e calças. Além disso almejamos a construção de roupas que possam ser usadas tanto em um local de trabalho quanto em um local de lazer, como sua empresa e residência, respectivamente.
+Tem-se como alvo do projeto facilitar o processo de compra e venda de cosméticos como camisetas e calças. Além disso, almejamos a construção de roupas que possam ser usadas tanto em um local de trabalho quanto em um local de lazer, como sua empresa e residência, respectivamente.
 
 ### Objetivo Específico
 
