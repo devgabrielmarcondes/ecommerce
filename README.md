@@ -34,3 +34,7 @@ Tornar o mercado de roupas mais acessível e ecológico por meio da venda online
 ## 🎯 Público-alvo
 
 O público alvo da empresa são pessoas da faixa etária de 16-35 anos, ou seja, adultos e adolescentes.
+
+## 🌐 Créditos ao Layout e Funcionalidades
+
+Grande parte do Design e Funcionalidades foram aproveitados do projeto [MERN-ECOMMERCE](https://github.com/safak/youtube/tree/mern-ecommerce-app) de [Safak](https://github.com/safak)
